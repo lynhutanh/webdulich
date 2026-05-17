@@ -10,8 +10,13 @@
       "esnext",
       "ES2024"
     ],
-    "types": ["node"],
-    "typeRoots": ["./node_modules/@types", "./pages/api/types"],
+    "types": [
+      "node"
+    ],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./pages/api/types"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -19,10 +24,10 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "baseUrl": "./",
     "paths": {
       "@layouts/*": [
@@ -77,4 +82,3 @@
     ".next/types/**/*.ts"
   ]
 }
-

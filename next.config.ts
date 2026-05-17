@@ -9,9 +9,7 @@ const nextConfig: NextConfig = {
   compress: true,
   reactStrictMode: false,
   distDir: '.next',
-  eslint: {
-    ignoreDuringBuilds: true
-  },
+
   images: {
     unoptimized: true,
     formats: ['image/webp'],
@@ -20,23 +18,10 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: '**.base-code.local', pathname: '**' },
       { protocol: 'https', hostname: 'images.unsplash.com', pathname: '**' },
       { protocol: 'https', hostname: 'i.pravatar.cc', pathname: '**' },
-    ],
-    domains: ['localhost', 'images.unsplash.com', 'i.pravatar.cc']
+    ]
   },
   poweredByHeader: false,
-  serverRuntimeConfig: {
-    API_ENDPOINT: process.env.API_SERVER_ENDPOINT || process.env.API_ENDPOINT
-  },
-  publicRuntimeConfig: {
-    SITE_URL: process.env.SITE_URL,
-    API_ENDPOINT: process.env.API_ENDPOINT || 'http://localhost:5001',
-    MAX_SIZE_IMAGE: process.env.MAX_SIZE_IMAGE || 1000,
-    MAX_SIZE_FILE: process.env.MAX_SIZE_FILE || 1000,
-    MAX_SIZE_VIDEO: process.env.MAX_SIZE_VIDEO || 5000,
-    NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
-    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
-    NEXT_PUBLIC_SOCKET_ENDPOINT: process.env.NEXT_PUBLIC_SOCKET_ENDPOINT
-  },
+
   webpack(config, { buildId, webpack }) {
     config.plugins.push(
       new webpack.DefinePlugin({
@@ -55,7 +40,8 @@ const nextConfig: NextConfig = {
 
     return config;
   },
-  transpilePackages: []
+  transpilePackages: [],
+  turbopack: {}
 };
 
 export default million.next(nextConfig);

@@ -1,9 +1,7 @@
 import axios from 'axios';
-import getConfig from 'next/config';
 import Cookies from 'js-cookie';
 
-const { publicRuntimeConfig } = getConfig() || {};
-const API_ENDPOINT = publicRuntimeConfig?.API_ENDPOINT || 'http://localhost:5001';
+const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT || 'http://localhost:5001';
 
 export const TOKEN_KEY = 'user_token';
 

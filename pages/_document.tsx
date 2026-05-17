@@ -1,5 +1,4 @@
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
-import getConfig from 'next/config';
 import type { DocumentContext } from 'next/document';
 
 interface DocumentProps {
@@ -13,8 +12,7 @@ async function getDocumentInitialProps(ctx: DocumentContext) {
 }
 
 function Document(props: DocumentProps) {
-  const { publicRuntimeConfig } = getConfig();
-  const baseUrl = publicRuntimeConfig?.SITE_URL || 'https://base-code.local';
+  const baseUrl = process.env.SITE_URL || 'https://base-code.local';
   const locale = props.locale ?? 'vi';
 
   return (

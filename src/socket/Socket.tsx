@@ -1,5 +1,5 @@
 import { authService } from '@services/auth.service';
-import getConfig from 'next/config';
+
 import { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import SocketIO from 'socket.io-client';
 import { useCurrentUserStore } from 'src/stores';
@@ -45,8 +45,7 @@ function Socket({ children }: ISocketProps) {
       query: token ? { token } : {}
     } as any;
 
-    const { publicRuntimeConfig: config } = getConfig();
-    const socketUrl = config.API_ENDPOINT as string;
+    const socketUrl = process.env.NEXT_PUBLIC_API_ENDPOINT || 'http://localhost:5001';
 
     socket.current = SocketIO(socketUrl, options) as any;
     setSocketState(socket.current);

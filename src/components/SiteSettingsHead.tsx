@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react';
-import getConfig from 'next/config';
 import { usePublicSiteSettingsStore } from 'src/stores';
 import { usePublicSiteSettings } from '@hooks/usePublicSiteSettings';
 
-const { publicRuntimeConfig } = getConfig() || {};
-const BASE_URL = publicRuntimeConfig?.SITE_URL || (typeof window !== 'undefined' ? window.location.origin : '');
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || (typeof window !== 'undefined' ? window.location.origin : '');
 
 export default function SiteSettingsHead() {
   const { site_name, site_logo, site_favicon, loaded, setSiteSettingsFromData } =

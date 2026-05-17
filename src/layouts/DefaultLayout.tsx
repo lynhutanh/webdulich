@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import getConfig from 'next/config';
 import { authService } from '@services/auth.service';
 import { useCurrentUserStore, usePublicSiteSettingsStore } from 'src/stores';
 import { LazyHydrate } from '@components/common';
@@ -13,8 +12,7 @@ interface DefaultLayoutProps {
   children: React.ReactNode;
 }
 
-const { publicRuntimeConfig } = getConfig() || {};
-const USER_BASE_URL = publicRuntimeConfig?.SITE_URL || (typeof window !== 'undefined' ? window.location.origin : '');
+const USER_BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || (typeof window !== 'undefined' ? window.location.origin : '');
 
 function resolveUrl(url: string) {
   if (!url) return '';
